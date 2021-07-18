@@ -1,3 +1,5 @@
+DROP database businessDB;
+
 CREATE database businessDB;
 
 USE businessDB;
@@ -8,7 +10,7 @@ name varchar(30),
 PRIMARY KEY (id)
 );
 
-CREATE TABLE postiion (
+CREATE TABLE position (
 id INT NOT NULL AUTO_INCREMENT,
 title varchar(30),
 salary dec(10,2), 
