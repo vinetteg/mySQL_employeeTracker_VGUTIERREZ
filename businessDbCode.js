@@ -214,33 +214,4 @@ const viewEmployees = () => {
   );
 };
 
-const updateRole = () => {
-  inquirer
-  .prompt([
-    {
-      name: "position",
-      type: "input",
-      message: "Which position would you like to update?",
-    },
-  ])
-  .then((answer) => {
-  connection.query(
-    "UPDATE position SET ? WHERE ?",
-    [
-      {
-        title: ,
-      },
-      {
-        flavor: "Rocky Road",
-      },
-    ],
-    (err, res) => {
-      if (err) throw err;
-      console.log(`${res.affectedRows} products updated!\n`);
-      // Call deleteProduct AFTER the UPDATE completes
-      runSearch();
-    }
-  );
-};
-
 runSearch();
