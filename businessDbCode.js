@@ -133,7 +133,6 @@ const addRole = () => {
   //   console.log(query.sql);
 };
 
-// how to get all questions to show?
 const addEmployee = () => {
   inquirer
     .prompt([
@@ -212,6 +211,64 @@ const viewEmployees = () => {
       runSearch();
     }
   );
+};
+
+const updateRole = () => {
+  let employeeList;
+  let ids;
+  let names;
+  connection.query(
+    "SELECT id, first_name, last_name FROM employee",
+
+    function (err, res) {
+      if (err) throw err;
+      // console.log(typeof res);
+      let results = JSON.stringify(res);
+      results = JSON.parse(results);
+      employeeList = results;
+
+      // employeeList.push(...results);
+      // console.log(results);
+      names = results.map((a) => `${a["first_name"]} ${a["last_name"]}`);
+      ids = results.map((a) => a["id"]);
+      // console.log(result);
+      inquirer
+        .prompt([
+          {
+            name: "update_position",
+            type: "list",
+            choices: names,
+            message: "Which employee role would you like to update?",
+          },
+        ])
+        .then((answer) => {
+          // 1. once the name is picked, filter the employeelist to get the person's id;
+          // 2. now that you have the chosen person's id you can use it in the update query
+
+          connection.query(
+            "UPDATE employee SET ? WHERE ?",
+            [
+              {
+                role_id: answer.role_id,
+              },
+              {
+                first_name: answer.name,
+                last_name: answer.last_name,
+              },
+            ],
+            (err, res) => {
+              if (err) throw err;
+              console.log(`${res.affectedRows} employee updated!\n`);
+              runSearch();
+            }
+          );
+        });
+    }
+  );
+
+  // let result = employeeList.map((a) => a.id);
+
+  //   console.log(query.sql);
 };
 
 runSearch();
