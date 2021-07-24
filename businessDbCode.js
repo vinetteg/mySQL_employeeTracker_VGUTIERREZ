@@ -244,16 +244,22 @@ const updateRole = () => {
         .then((answer) => {
           // 1. once the name is picked, filter the employeelist to get the person's id;
           // 2. now that you have the chosen person's id you can use it in the update query
-
+          inquirer.prompt([
+            {
+              name: "update_role",
+              type: "input",
+              message: "Which role would you like to update the employee to?",
+            },
+          ]);
           connection.query(
             "UPDATE employee SET ? WHERE ?",
             [
               {
-                role_id: answer.role_id,
+                first_name: answer.first_name,
+                last_name: answer.last_name,
               },
               {
-                first_name: answer.name,
-                last_name: answer.last_name,
+                role_id: answer.role_id,
               },
             ],
             (err, res) => {
