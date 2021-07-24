@@ -13,7 +13,7 @@ PRIMARY KEY (id)
 CREATE TABLE position (
 id INT NOT NULL AUTO_INCREMENT,
 title varchar(30),
-salary dec(10,2), 
+salary dec(10,2),
 department_id INT NOT NULL, 
 PRIMARY KEY (id)
 );

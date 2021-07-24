@@ -259,12 +259,12 @@ const updateRole = () => {
                 last_name: answer.last_name,
               },
               {
-                role_id: answer.role_id,
+                role_id: answer.update_role,
               },
             ],
             (err, res) => {
               if (err) throw err;
-              console.log(`${res.affectedRows} employee updated!\n`);
+              console.log(`${res.affectedRows} employees updated!\n`);
               runSearch();
             }
           );
