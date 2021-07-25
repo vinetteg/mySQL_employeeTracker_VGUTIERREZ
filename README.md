@@ -26,6 +26,9 @@ Use "npm i" to install dependencies and "node businessDbCode.js" to start the ap
 
 - This tool is for a small business owner to keep track of their current employees.
 
+![MySQL Employee Tracker Image 1](./images/employeetracker1.png)
+![MySQL Employee Tracker Image 2](./images/employeetracker2.png)
+
 # License
 
 <a name="license"></a>
